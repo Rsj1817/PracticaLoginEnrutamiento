@@ -11,8 +11,19 @@ const UserList = () => {
       <h2>Perfil</h2>
 
       <div style={{ marginTop: "10px" }}>
-        <p>{currentUser.name}</p>
+        <p>
+          <strong>Nombre:</strong> {currentUser.name}
+        </p>
+
+        <p>
+          <strong>User:</strong> {currentUser.user}
+        </p>
+
+        <p>
+          <strong>Rol:</strong> {currentUser.role}
+        </p>
       </div>
+      
 
       <div style={{ marginTop: "20px" }}>
         <Button onClick={logout}>
