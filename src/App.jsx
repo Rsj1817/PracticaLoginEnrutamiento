@@ -10,11 +10,16 @@ function App() {
 
   return (
     <Routes>
+
       <Route
         path="/login"
         element={
           currentUser ? (
-            <Navigate to="/profile" />
+            currentUser.role === "admin" ? (
+              <Navigate to="/admin" replace />
+            ) : (
+              <Navigate to="/profile" replace />
+            )
           ) : (
             <Login />
           )
@@ -39,7 +44,8 @@ function App() {
         }
       />
 
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
+
     </Routes>
   );
 }

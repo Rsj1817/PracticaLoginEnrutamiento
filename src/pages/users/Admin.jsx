@@ -1,30 +1,22 @@
+import React from "react";
 import { useAuth } from "../../context/AuthContext";
+import TablaUsuarios from "../../Components/TablaUsuarios";
+import UserList from "./UserList"; 
 
 const Admin = () => {
   const { users } = useAuth();
 
   return (
-    <div>
-      <h2>Panel de Administración</h2>
+    <div style={{ padding: 20 }}>
+      <h2>Administración - Usuarios</h2>
+      <div style={{ marginTop: 12 }}>
+        <TablaUsuarios users={users} />
+      </div>
 
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Usuario</th>
-            <th>Nombre</th>
-            <th>Rol</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((u) => (
-            <tr key={u.user}>
-              <td>{u.user}</td>
-              <td>{u.name}</td>
-              <td>{u.role}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div style={{ marginTop: 24 }}>
+        <h3>Mi Perfil</h3>
+        <UserList />
+      </div>
     </div>
   );
 };
