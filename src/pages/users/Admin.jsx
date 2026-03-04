@@ -1,6 +1,5 @@
-import React from "react";
 import { useAuth } from "../../context/AuthContext";
-import TablaUsuarios from "../../Components/TablaUsuarios";
+import Table from "../../Components/Table";
 import UserList from "./UserList"; 
 
 const Admin = () => {
@@ -10,7 +9,14 @@ const Admin = () => {
     <div style={{ padding: 20 }}>
       <h2>Administración - Usuarios</h2>
       <div style={{ marginTop: 12 }}>
-        <TablaUsuarios users={users} />
+        <Table
+          columns={[
+            { header: "Usuario", key: "user" },
+            { header: "Nombre", key: "name" },
+            { header: "Rol", key: "role" }
+          ]}
+          data={users}
+        />
       </div>
 
       <div style={{ marginTop: 24 }}>

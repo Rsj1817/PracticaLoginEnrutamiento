@@ -12,10 +12,10 @@ export const AuthProvider = ({ children }) => {
 
     if (foundUser) {
       setCurrentUser(foundUser);
-      return true;
+      return foundUser;
     }
 
-    return false;
+    return null;
   };
 
   const logout = () => {

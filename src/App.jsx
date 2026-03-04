@@ -10,7 +10,6 @@ function App() {
 
   return (
     <Routes>
-
       <Route
         path="/login"
         element={
@@ -34,7 +33,6 @@ function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/admin"
         element={

@@ -8,7 +8,19 @@ export const users = [
   {
     user: "rigoberto",
     name: "Rigoberto Sanchez Jimenez",
+    role: "admin",
+    password: "admin123"
+  },
+  {
+    user: "luis",
+    name: "Luis Angel Pedraza Miranda",
     role: "user",
-    password: "user123"
+    password: "luis123"
+  },
+  {
+    user: "janette",
+    name: "Janette Alicia Tapia Ramirez",
+    role: "user",
+    password: "janette123"
   }
 ];

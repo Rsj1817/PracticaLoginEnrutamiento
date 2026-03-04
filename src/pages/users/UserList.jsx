@@ -8,12 +8,10 @@ const UserList = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Perfil de Usuario</h2>
+      <h2>Perfil</h2>
 
       <div style={{ marginTop: "10px" }}>
-        <p><strong>Nombre:</strong> {currentUser.name}</p>
-        <p><strong>Usuario:</strong> {currentUser.user}</p>
-        <p><strong>Rol:</strong> {currentUser.role}</p>
+        <p>{currentUser.name}</p>
       </div>
 
       <div style={{ marginTop: "20px" }}>

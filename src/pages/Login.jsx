@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../Components/Button";
+import Input from "../Components/Input";
 
 const Login = () => {
   const { login } = useAuth();
@@ -13,10 +14,10 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const success = login(user, password);
+    const authUser = login(user, password);
 
-    if (success) {
-      navigate("/profile");
+    if (authUser) {
+      navigate(authUser.role === "admin" ? "/admin" : "/profile");
     } else {
       alert("Credenciales incorrectas");
     }
@@ -26,17 +27,11 @@ const Login = () => {
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
-      <input
-        type="text"
-        placeholder="Usuario"
-        onChange={(e) => setUser(e.target.value)}
-      />
+      <Input type="text" placeholder="Usuario" value={user} onChange={(e) => setUser(e.target.value)} />
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div style={{ height: 12 }} />
+
+      <Input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
 
       <Button type="submit">Ingresar</Button>
     </form>
