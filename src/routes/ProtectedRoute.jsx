@@ -12,8 +12,8 @@ const ProtectedRoute = ({ children, role }) => {
   if (role && currentUser.role !== role) {
     return <Navigate to="/profile" replace />;
   }
-
+                                                              
   return children;
-};
+};                          
 
 export default ProtectedRoute;
