@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import Button from "../Components/Button";
 import Input from "../Components/Input";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, currentUser } = useAuth();
   const navigate = useNavigate();
 
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+
+  if (currentUser) {
+    return (
+      <Navigate
+        to={currentUser.role === "admin" ? "/admin" : "/profile"}
+        replace
+      />
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,17 +33,45 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <div style={{ 
+      display: "flex", 
+      justifyContent: "center", 
+      alignItems: "center", 
+      height: "100vh" 
+    }}>
+      <form 
+        onSubmit={handleSubmit}
+        style={{
+          padding: "30px",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          width: "300px",
+          textAlign: "center"
+        }}
+      >
+        <h2>Login</h2>
 
-      <Input type="text" placeholder="Usuario" value={user} onChange={(e) => setUser(e.target.value)} />
+        <Input
+          type="text"
+          placeholder="Usuario"
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+        />
 
-      <div style={{ height: 12 }} />
+        <div style={{ height: 15 }} />
 
-      <Input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <Button type="submit">Ingresar</Button>
-    </form>
+        <div style={{ height: 20 }} />
+
+        <Button type="submit">Ingresar</Button>
+      </form>
+    </div>
   );
 };
 
